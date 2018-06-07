@@ -6,11 +6,11 @@
  * Time: 16:43
  */
 header("content-type:text/html;charset=utf8");
-$pdo = new \PDO("mysql:host=127.0.0.1;dbname=test",'root','root');
+require "db.php";
 
 $sql="select * from messageboard";
 
-$arr = $pdo->query($sql)->fetchAll();
+$arr = con_pdo('test')->query($sql)->fetchAll();
 foreach ($arr as $key => $value) {
     $data[$key]['title'] = $arr[$key]['title'];
     $data[$key]['author'] = $arr[$key]['author'];

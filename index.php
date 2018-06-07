@@ -6,7 +6,7 @@
  * Time: 16:21
  */
 header("content-type:text/html;charset=utf8");
-$pdo = new \PDO("mysql:host=127.0.0.1;dbname=test",'root','root');
+require "db.php";
 $title=$_POST["title"];
 $author=$_POST["author"];
 $message=$_POST["message"];
@@ -14,7 +14,7 @@ $time=time();
 
 $sql="insert into messageboard(title,author,message,c_time) values('$title','$author','$message','$time')";
 
-if($pdo->exec($sql)){
+if(con_pdo('test')->exec($sql)){
     echo "<script>alert('留言成功');window.location.href='show.php'</script>";
 }
 else {
